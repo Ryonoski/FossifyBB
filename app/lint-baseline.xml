@@ -1,0 +1,1316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 9.4.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.4.1)" variant="all" version="9.4.1">
+
+    <issue
+        id="DuplicateIncludedIds"
+        message="Duplicate id @+id/search_bar, defined or included multiple times in layout/activity_main.xml: [layout/activity_main.xml => layout/widgets_fragment.xml defines @+id/search_bar, layout/activity_main.xml => layout/all_apps_fragment.xml defines @+id/search_bar]"
+        errorLine1="    &lt;include"
+        errorLine2="    ^">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="16"
+            column="5"
+            message="Duplicate id @+id/search_bar, defined or included multiple times in layout/activity_main.xml: [layout/activity_main.xml => layout/widgets_fragment.xml defines @+id/search_bar, layout/activity_main.xml => layout/all_apps_fragment.xml defines @+id/search_bar]"/>
+        <location
+            file="src/main/res/layout/widgets_fragment.xml"
+            line="9"
+            column="9"
+            message="Defined here, included via layout/activity_main.xml => layout/widgets_fragment.xml defines @+id/search_bar"/>
+        <location
+            file="src/main/res/layout/all_apps_fragment.xml"
+            line="9"
+            column="9"
+            message="Defined here, included via layout/activity_main.xml => layout/all_apps_fragment.xml defines @+id/search_bar"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="`android:enforceNavigationBarContrast` requires API level 29 (current min is 26)"
+        errorLine1="        &lt;item name=&quot;android:enforceNavigationBarContrast&quot;>false&lt;/item>"
+        errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/styles.xml"
+            line="12"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="`android:enforceStatusBarContrast` requires API level 29 (current min is 26)"
+        errorLine1="        &lt;item name=&quot;android:enforceStatusBarContrast&quot;>false&lt;/item>"
+        errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/styles.xml"
+            line="13"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="`android:windowLayoutInDisplayCutoutMode` requires API level 27 (current min is 26)"
+        errorLine1="        &lt;item name=&quot;android:windowLayoutInDisplayCutoutMode&quot;>shortEdges&lt;/item>"
+        errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/styles.xml"
+            line="14"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="NotificationPermission"
+        message="When targeting Android 13 or higher, posting a permission requires holding the `POST_NOTIFICATIONS` permission (usage from org.fossify.commons.asynctasks.CopyMoveTask)">
+        <location
+            file="src/main/AndroidManifest.xml"/>
+    </issue>
+
+    <issue
+        id="OldTargetApi"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details."
+        errorLine1="app-build-targetSDK = &quot;36&quot;"
+        errorLine2="                      ~~~~">
+        <location
+            file="$HOME/work/Launcher/Launcher/gradle/libs.versions.toml"
+            line="17"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="CustomSplashScreen"
+        message="The application should not provide its own launch screen"
+        errorLine1="class SplashActivity : BaseSplashActivity() {"
+        errorLine2="      ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/activities/SplashActivity.kt"
+            line="6"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Red` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="94"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Red` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="96"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Red` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="99"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Pink` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="112"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Pink` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="114"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Pink` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="117"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Purple` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="130"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Purple` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="132"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Purple` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="135"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Deep_purple` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="148"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Deep_purple` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="150"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Deep_purple` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="153"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Indigo` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="166"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Indigo` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="168"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Indigo` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="171"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Blue` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="184"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Blue` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="186"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Blue` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="189"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Light_blue` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="202"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Light_blue` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="204"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Light_blue` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="207"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Cyan` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="220"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Cyan` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="222"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Cyan` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="225"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Teal` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="238"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Teal` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="240"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Teal` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="243"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Green` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="256"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Green` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="258"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Green` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="261"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Light_green` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="274"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Light_green` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="276"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Light_green` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="279"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Lime` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="292"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Lime` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="294"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Lime` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="297"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Yellow` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="310"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Yellow` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="312"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Yellow` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="315"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Amber` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="328"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Amber` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="330"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Amber` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="333"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Orange` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="346"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Orange` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="348"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Orange` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="351"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Deep_orange` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="364"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Deep_orange` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="366"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Deep_orange` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="369"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Brown` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="382"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Brown` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="384"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Brown` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="387"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Blue_grey` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="400"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Blue_grey` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="402"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Blue_grey` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="405"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `clearTaskOnLaunch` on `&lt;activity-alias>` `.activities.SplashActivity.Grey_black` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:clearTaskOnLaunch=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="418"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `excludeFromRecents` on `&lt;activity-alias>` `.activities.SplashActivity.Grey_black` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:excludeFromRecents=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="420"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidManifestAttribute"
+        message="Attribute `launchMode` on `&lt;activity-alias>` `.activities.SplashActivity.Grey_black` is invalid, and will be silently ignored. This attribute is always ignored on `&lt;activity-alias>`."
+        errorLine1="            android:launchMode=&quot;singleTask&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="423"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 9.4.1 is available: 9.5.0"
+        errorLine1="gradlePlugins-agp = &quot;9.4.1&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="$HOME/work/Launcher/Launcher/gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of `app-build-compileSDKVersion` than 36 is available: 37"
+        errorLine1="app-build-compileSDKVersion = &quot;36&quot;"
+        errorLine2="                              ~~~~">
+        <location
+            file="$HOME/work/Launcher/Launcher/gradle/libs.versions.toml"
+            line="16"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="LockedOrientationActivity"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices"
+        errorLine1="            android:screenOrientation=&quot;portrait&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="47"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.6.8"
+        errorLine1="detektCompose = &quot;0.4.28&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/work/Launcher/Launcher/gradle/libs.versions.toml"
+            line="8"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Fixed screen orientations will be ignored in most cases, starting from Android 16. Android is moving toward a model where apps are expected to adapt to various orientations, display sizes, and aspect ratios."
+        errorLine1="            android:screenOrientation=&quot;portrait&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="47"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;app_launcher_name&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;ckb&quot;"
+        errorLine1="    &lt;string name=&quot;app_launcher_name&quot;>Launcher_debug&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/debug/res/values/strings.xml"
+            line="3"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;app_launcher_name&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;ckb&quot;"
+        errorLine1="    &lt;string name=&quot;app_launcher_name&quot;>Launcher&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="3"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;launcher_settings&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;launcher_settings&quot;>Launcher Settings&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="4"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;app_info&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;app_info&quot;>App info&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="5"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;touch_hold_widget&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;touch_hold_widget&quot;>Long press the widget and drag it on your home screen&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="6"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;uninstall&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;uninstall&quot;>Uninstall&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;hide_icon&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;hide_icon&quot;>Hide icon&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;add_hidden_icons&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;add_hidden_icons&quot;>Add hidden icons&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="9"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;manage_hidden_icons&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;manage_hidden_icons&quot;>Manage hidden icons&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="10"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;hidden_icons&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;hidden_icons&quot;>Hidden icons&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="11"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;hidden_icons_placeholder&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;si&quot; (Sinhala), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;bqi&quot;"
+        errorLine1="    &lt;string name=&quot;hidden_icons_placeholder&quot;>Some apps cannot be uninstalled due to system restrictions, but you can at least hide their icons to avoid seeing them.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="12"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;app_drawer_settings&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;app_drawer_settings&quot;>App drawer&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="13"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;close_app_drawer_on_app_open&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;close_app_drawer_on_app_open&quot;>Close app drawer on opening an app&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="14"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;auto_show_keyboard_in_app_drawer&quot; is not translated in &quot;hi&quot; (Hindi), &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;in&quot; (Indonesian), &quot;ms&quot; (Malay), &quot;el&quot; (Greek), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;vi&quot; (Vietnamese), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;ro&quot; (Romanian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;ckb&quot;"
+        errorLine1="    &lt;string name=&quot;auto_show_keyboard_in_app_drawer&quot;>Automatically show keyboard in drawer&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="15"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;show_app_labels&quot; is not translated in &quot;hi&quot; (Hindi), &quot;fil&quot; (Filipino; Pilipino), &quot;lt&quot; (Lithuanian), &quot;lv&quot; (Latvian), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;in&quot; (Indonesian), &quot;ms&quot; (Malay), &quot;el&quot; (Greek), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;vi&quot; (Vietnamese), &quot;nb&quot; (Norwegian Bokmål), &quot;ja&quot; (Japanese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;ro&quot; (Romanian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;kab&quot; (Kabyle), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;sr&quot; (Serbian), &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;gl&quot; (Galician), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        errorLine1="    &lt;string name=&quot;show_app_labels&quot;>Show app labels&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;home_screen_settings&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;home_screen_settings&quot;>Home screen&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="17"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;widget_too_big&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh)"
+        errorLine1="    &lt;string name=&quot;widget_too_big&quot;>Widget is too big for current home screen size&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="18"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;double_tap_to_lock&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;vi&quot; (Vietnamese), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;ro&quot; (Romanian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;ckb&quot;"
+        errorLine1="    &lt;string name=&quot;double_tap_to_lock&quot;>Double tap to lock screen&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="19"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;lock_device_admin_hint&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;vi&quot; (Vietnamese), &quot;nb&quot; (Norwegian Bokmål), &quot;ja&quot; (Japanese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;ro&quot; (Romanian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        errorLine1="    &lt;string name=&quot;lock_device_admin_hint&quot;>To enable the double tap to lock screen feature, you need to grant admin permission. Note that the app cannot be uninstalled until this permission is removed.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="20"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;lock_device_admin_warning&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;vi&quot; (Vietnamese), &quot;nb&quot; (Norwegian Bokmål), &quot;ja&quot; (Japanese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;ro&quot; (Romanian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bg&quot; (Bulgarian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;ckb&quot;"
+        errorLine1="    &lt;string name=&quot;lock_device_admin_warning&quot;>Deactivating admin permission will disable the double tap to lock screen feature.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="21"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="NotifyDataSetChanged"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
+        errorLine1="            notifyDataSetChanged()"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/adapters/WidgetsAdapter.kt"
+            line="120"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="NotifyDataSetChanged"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
+        errorLine1="            notifyDataSetChanged()"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/adapters/WidgetsAdapter.kt"
+            line="127"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`.">
+        <location
+            file="src/main/res/mipmap-anydpi-v26"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/AppTheme`)"
+        errorLine1="    android:background=&quot;?attr/selectableItemBackground&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/item_hidden_icon.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.bool.show_donate_in_about` appears to be unused"
+        errorLine1="    &lt;bool name=&quot;show_donate_in_about&quot;>true&lt;/bool>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/foss/res/values/bools.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.icon_long_press_anchor_offset_y` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;icon_long_press_anchor_offset_y&quot;>150dp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.min_folder_view_height` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;min_folder_view_height&quot;>200dp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="12"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.max_folder_view_height` appears to be unused"
+        errorLine1="    &lt;dimen name=&quot;max_folder_view_height&quot;>500dp&lt;/dimen>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/dimens.xml"
+            line="13"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.ic_launcher_amber_background` appears to be unused"
+        errorLine1="    &lt;color name=&quot;ic_launcher_amber_background&quot;>#106D20&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/ic_launcher_amber_background.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.ic_launcher_blue_background` appears to be unused"
+        errorLine1="    &lt;color name=&quot;ic_launcher_blue_background&quot;>#106D20&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/ic_launcher_blue_background.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.hide_icon` appears to be unused"
+        errorLine1="    &lt;string name=&quot;hide_icon&quot;>Hide icon&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.add_hidden_icons` appears to be unused"
+        errorLine1="    &lt;string name=&quot;add_hidden_icons&quot;>Add hidden icons&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="9"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(wasHomeScreenInit) = prefs.edit().putBoolean(WAS_HOME_SCREEN_INIT, wasHomeScreenInit).apply()"
+        errorLine2="                                 ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="14"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(homeColumnCount) = prefs.edit().putInt(HOME_COLUMN_COUNT, homeColumnCount).apply()"
+        errorLine2="                               ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="18"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(homeRowCount) = prefs.edit().putInt(HOME_ROW_COUNT, homeRowCount).apply()"
+        errorLine2="                            ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="22"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(drawerColumnCount) = prefs.edit().putInt(DRAWER_COLUMN_COUNT, drawerColumnCount).apply()"
+        errorLine2="                                 ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="26"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(showSearchBar) = prefs.edit().putBoolean(SHOW_SEARCH_BAR, showSearchBar).apply()"
+        errorLine2="                             ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="30"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(closeAppDrawer) = prefs.edit().putBoolean(CLOSE_APP_DRAWER, closeAppDrawer).apply()"
+        errorLine2="                              ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="34"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(autoShowKeyboardInAppDrawer) = prefs.edit()"
+        errorLine2="                                           ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="38"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(showDrawerAppLabels) = prefs.edit().putBoolean(SHOW_DRAWER_APP_LABELS, showDrawerAppLabels).apply()"
+        errorLine2="                                   ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="43"
+            column="36"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `SharedPreferences.edit` instead?"
+        errorLine1="        set(showHomeAppLabels) = prefs.edit().putBoolean(SHOW_HOME_APP_LABELS, showHomeAppLabels).apply()"
+        errorLine2="                                 ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/helpers/Config.kt"
+            line="47"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `Int.toDrawable` instead?"
+        errorLine1="        background = ColorDrawable(Color.TRANSPARENT)"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/views/MyAppWidgetResizeFrame.kt"
+            line="48"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `Int.toDrawable` instead?"
+        errorLine1="        background = ColorDrawable(Color.TRANSPARENT)"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/views/MyAppWidgetResizeFrame.kt"
+            line="48"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="Custom view `MyAppWidgetHostView` overrides `onTouchEvent` but not `performClick`"
+        errorLine1="    override fun onTouchEvent(event: MotionEvent?): Boolean {"
+        errorLine2="                 ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/views/MyAppWidgetHostView.kt"
+            line="23"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="Custom view `MyAppWidgetResizeFrame` overrides `onTouchEvent` but not `performClick`"
+        errorLine1="    override fun onTouchEvent(event: MotionEvent?): Boolean {"
+        errorLine2="                 ~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/views/MyAppWidgetResizeFrame.kt"
+            line="105"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="    &lt;ImageView"
+        errorLine2="     ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/item_widget_preview.xml"
+            line="9"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead."
+        errorLine1="        binding.settingsDrawerColumnCount.text = currentColumnCount.toString()"
+        errorLine2="                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/activities/SettingsActivity.kt"
+            line="158"
+            column="50"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead."
+        errorLine1="        binding.settingsHomeScreenRowCount.text = currentRowCount.toString()"
+        errorLine2="                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/activities/SettingsActivity.kt"
+            line="202"
+            column="51"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead."
+        errorLine1="        binding.settingsHomeScreenColumnCount.text = currentColumnCount.toString()"
+        errorLine2="                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/home/activities/SettingsActivity.kt"
+            line="228"
+            column="54"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="        android:paddingStart=&quot;@dimen/medium_margin&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/item_widget_list_section.xml"
+            line="27"
+            column="9"/>
+    </issue>
+
+</issues>
