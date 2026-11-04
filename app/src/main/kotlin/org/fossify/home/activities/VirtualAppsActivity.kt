@@ -97,7 +97,7 @@ class VirtualAppsActivity : Activity() {
     }
 
     companion object {
-        private const val BB_PKG = "top.niunaijun.blackbox"
+        private const val BB_PKG = "top.niunaijun.blackboxa"
         private const val BB_ACTIVITY = "top.niunaijun.blackboxa.bridge.BridgeLaunchActivity"
     }
 }

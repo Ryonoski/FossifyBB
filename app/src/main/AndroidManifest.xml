@@ -23,8 +23,8 @@
         android:required="false" />
 
     <queries>
-        <package android:name="top.niunaijun.blackbox" />
-        <provider android:authorities="top.niunaijun.blackbox.bridge" />
+        <package android:name="top.niunaijun.blackboxa" />
+        <provider android:authorities="top.niunaijun.blackboxa.bridge" />
     </queries>
 
     <application
