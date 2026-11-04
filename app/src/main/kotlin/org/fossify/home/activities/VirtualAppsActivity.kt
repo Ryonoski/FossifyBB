@@ -29,6 +29,7 @@ class VirtualAppsActivity : Activity() {
             text = "Loading..."
             gravity = Gravity.CENTER
             setPadding(48, 48, 48, 48)
+            setTextIsSelectable(true)
         }
         val match = FrameLayout.LayoutParams.MATCH_PARENT
         val root = FrameLayout(this)
@@ -52,16 +53,26 @@ class VirtualAppsActivity : Activity() {
                     Uri.parse("content://$BB_PKG.bridge"), null, null, null, null
                 )
                 if (cursor == null) {
-                    error = "NewBlackbox did not answer. Is it installed?"
+                    val info = packageManager.resolveContentProvider("$BB_PKG.bridge", 0)
+                    error = if (info == null) {
+                        "Provider not found: NewBlackbox is not installed, or this app cannot see its provider."
+                    } else {
+                        "Provider found but returned nothing: it most likely crashed inside NewBlackbox."
+                    }
                 } else {
                     cursor.use { c ->
                         while (c.moveToNext()) {
-                            result.add(VApp(c.getString(0), c.getString(1), c.getInt(2)))
+                            val pkg = c.getString(0)
+                            if (pkg == "__error__") {
+                                error = "NewBlackbox error: " + c.getString(1)
+                                break
+                            }
+                            result.add(VApp(pkg, c.getString(1), c.getInt(2)))
                         }
                     }
                 }
             } catch (e: Exception) {
-                error = "Can't reach NewBlackbox bridge (" + e.javaClass.simpleName + ")"
+                error = "Can't reach NewBlackbox bridge (" + e.javaClass.simpleName + "): " + e.message
             }
             result.sortBy { it.label.lowercase() }
             runOnUiThread {
