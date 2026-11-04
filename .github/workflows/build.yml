@@ -35,7 +35,7 @@ jobs:
           mkdir -p ~/.android
           if [ -f .github/debug.keystore ]; then cp .github/debug.keystore ~/.android/debug.keystore; fi
       - run: chmod +x gradlew && ./gradlew assembleFossDebug
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: apk
           path: app/build/outputs/apk/foss/debug/*.apk
