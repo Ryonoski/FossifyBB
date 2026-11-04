@@ -5,19 +5,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Ryonoski/Wha
+          path: bb
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-      - name: Install SDK platform
+      - name: Install SDK and NDK
         run: |
           SDKM=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
           yes | $SDKM --licenses > /dev/null
-          $SDKM "platforms;android-36" "build-tools;34.0.0"
+          $SDKM "platforms;android-36" "platforms;android-35" "build-tools;34.0.0" "ndk;29.0.13846066"
+      - name: Build BlackBox engine
+        working-directory: bb
+        run: |
+          chmod +x gradlew
+          ./gradlew :Bcore:assembleDebug :black-reflection:jar
+      - name: Copy engine into launcher
+        run: |
+          mkdir -p app/libs
+          cp bb/Bcore/build/outputs/aar/*ebug*.aar app/libs/
+          cp bb/black-reflection/build/libs/*.jar app/libs/
+          cp bb/Bcore/libs/*.jar app/libs/ 2>/dev/null || true
+          ls -la app/libs
       - name: Use fixed debug key
         run: |
           mkdir -p ~/.android
-          cp .github/debug.keystore ~/.android/debug.keystore
+          if [ -f .github/debug.keystore ]; then cp .github/debug.keystore ~/.android/debug.keystore; fi
       - run: chmod +x gradlew && ./gradlew assembleFossDebug
       - uses: actions/upload-artifact@v4
         with:

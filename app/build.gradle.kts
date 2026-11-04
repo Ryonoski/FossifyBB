@@ -145,3 +145,22 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     detektPlugins(libs.compose.detekt)
 }
+
+// ---- BlackBox engine (added by merge1.sh) ----
+android {
+    defaultConfig {
+        // BlackBox needs a low targetSdk (NewBlackbox's root build.gradle says "don't change this")
+        targetSdk = 28
+    }
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+}
+
+dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
+    implementation("com.moandjiezana.toml:toml4j:0.7.2")
+    implementation("com.github.tiann:FreeReflection:3.2.2")
+}
