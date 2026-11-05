@@ -457,5 +457,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.XposedActivity"
+            android:exported="false"
+            android:label="Xposed modules"
+            android:theme="@android:style/Theme.DeviceDefault" />
     </application>
 </manifest>

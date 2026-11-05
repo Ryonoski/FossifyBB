@@ -59,6 +59,7 @@ class VirtualAppsActivity : Activity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menu.add(0, MENU_ADD, 0, "Add app").setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         menu.add(0, MENU_LOG, 1, "Copy last crash").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        menu.add(0, MENU_XP, 2, "Xposed modules").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         return true
     }
 
@@ -66,6 +67,7 @@ class VirtualAppsActivity : Activity() {
         when (item.itemId) {
             MENU_ADD -> showAddDialog()
             MENU_LOG -> copyCrash()
+            MENU_XP -> startActivity(Intent(this, XposedActivity::class.java))
         }
         return true
     }
@@ -174,5 +176,6 @@ class VirtualAppsActivity : Activity() {
     companion object {
         private const val MENU_ADD = 1
         private const val MENU_LOG = 2
+        private const val MENU_XP = 3
     }
 }
