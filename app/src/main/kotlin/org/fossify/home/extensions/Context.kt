@@ -40,6 +40,7 @@ val Context.roleManager: RoleManager
     get() = getSystemService(RoleManager::class.java)
 
 fun Context.getDrawableForPackageName(packageName: String): Drawable? {
+        if (org.fossify.home.virtual.VirtualApps.isVirtual(packageName)) return org.fossify.home.virtual.VirtualApps.icon(packageName)
     var drawable: Drawable? = null
     try {
         // try getting the properly colored launcher icons

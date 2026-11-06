@@ -1128,6 +1128,7 @@ class MainActivity : SimpleActivity(), FlingListener {
         }
 
         launchersDB.insertAll(allApps)
+        allApps.addAll(org.fossify.home.virtual.VirtualApps.launchers(this).filter { !hiddenIcons.contains(it.getLauncherIdentifier()) })
         return allApps
     }
 

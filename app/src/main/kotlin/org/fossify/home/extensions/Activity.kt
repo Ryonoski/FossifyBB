@@ -38,6 +38,7 @@ import org.fossify.home.interfaces.ItemMenuListener
 import org.fossify.home.models.HomeScreenGridItem
 
 fun Activity.launchApp(packageName: String, activityName: String) {
+        if (org.fossify.home.virtual.VirtualApps.isVirtual(packageName)) { org.fossify.home.virtual.VirtualApps.launch(this, packageName); return }
     try {
         Intent(Intent.ACTION_MAIN).apply {
             addCategory(Intent.CATEGORY_LAUNCHER)
@@ -57,6 +58,7 @@ fun Activity.launchApp(packageName: String, activityName: String) {
 }
 
 fun Activity.launchAppInfo(packageName: String) {
+        if (org.fossify.home.virtual.VirtualApps.isVirtual(packageName)) { org.fossify.home.virtual.VirtualApps.toast(this, "Virtual app - no system app info"); return }
     Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
         data = Uri.fromParts("package", packageName, null)
         startActivity(this)
@@ -73,6 +75,7 @@ fun Activity.canAppBeUninstalled(packageName: String): Boolean {
 }
 
 fun Activity.uninstallApp(packageName: String) {
+        if (org.fossify.home.virtual.VirtualApps.isVirtual(packageName)) { org.fossify.home.virtual.VirtualApps.remove(this, packageName); return }
     Intent(Intent.ACTION_DELETE).apply {
         data = Uri.fromParts("package", packageName, null)
         startActivityForResult(this, UNINSTALL_APP_REQUEST_CODE)
