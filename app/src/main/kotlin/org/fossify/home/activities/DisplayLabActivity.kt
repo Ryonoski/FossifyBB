@@ -12,6 +12,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.Display
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -24,10 +25,12 @@ import android.widget.TextView
 import android.widget.Toast
 
 /**
- * Feasibility probe: create a virtual display rendering into a SurfaceView, start an activity on it,
- * forward touches into that activity's window, and print a report.
+ * Feasibility probe v2: create a virtual display rendering into a SurfaceView, then try several ways
+ * of starting an activity on it (with full stack traces), forward touches, and print a report.
  */
 class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
+
+    private class Strategy(val name: String, val run: (Intent, Int, Display) -> Unit)
 
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var surfaceView: SurfaceView
@@ -38,6 +41,7 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
     private var vh = 0
     private var forwarded = 0
     private var verdict = ""
+    private var gen = 0
 
     private val ticker = object : Runnable {
         override fun run() {
@@ -57,10 +61,10 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
         surfaceView = SurfaceView(this)
         surfaceView.holder.addCallback(this)
         surfaceView.setOnTouchListener { v, ev -> forwardTouch(v, ev); true }
-        root.addView(surfaceView, LinearLayout.LayoutParams((300 * density).toInt(), (380 * density).toInt()))
+        root.addView(surfaceView, LinearLayout.LayoutParams((300 * density).toInt(), (300 * density).toInt()))
 
         status = TextView(this)
-        status.textSize = 12f
+        status.textSize = 11f
         status.setPadding(24, 12, 24, 12)
         val scroll = ScrollView(this)
         scroll.addView(status)
@@ -124,6 +128,22 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
         log.append(line).append('\n')
     }
 
+    private fun shortTrace(t: Throwable): String {
+        val sb = StringBuilder(t.javaClass.name + ": " + t.message)
+        val frames = t.stackTrace
+        for (i in 0 until minOf(frames.size, 12)) sb.append("\n      at ").append(frames[i].toString())
+        var c = t.cause
+        var depth = 0
+        while (c != null && depth < 2) {
+            sb.append("\n    caused by ").append(c.javaClass.name).append(": ").append(c.message)
+            val cf = c.stackTrace
+            for (i in 0 until minOf(cf.size, 8)) sb.append("\n      at ").append(cf[i].toString())
+            c = c.cause
+            depth++
+        }
+        return sb.toString()
+    }
+
     private fun startLab(holder: SurfaceHolder, w: Int, h: Int) {
         say("Android SDK " + Build.VERSION.SDK_INT + " (" + Build.MANUFACTURER + " " + Build.MODEL + ")")
         val dm = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -137,12 +157,14 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
                 val d = dm.createVirtualDisplay("lab", w, h, dpi, holder.surface, attempt.second)
                 if (d != null) {
                     vd = d
-                    say("virtual display created (" + attempt.first + "): id=" + d.display.displayId + " " + w + "x" + h + " dpi " + dpi)
+                    val disp = d.display
+                    say("virtual display (" + attempt.first + "): id=" + disp.displayId + " " + w + "x" + h + " dpi " + dpi +
+                        " flags=0x" + Integer.toHexString(disp.flags) + " valid=" + disp.isValid)
                     break
                 }
                 say("createVirtualDisplay returned null (" + attempt.first + ")")
             } catch (t: Throwable) {
-                say("createVirtualDisplay failed (" + attempt.first + "): " + t.javaClass.simpleName + ": " + t.message)
+                say("createVirtualDisplay failed (" + attempt.first + "): " + shortTrace(t))
             }
         }
         val d = vd
@@ -150,29 +172,60 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
             verdict = "VERDICT: FAIL - could not create a virtual display"
             return
         }
-        launchTarget(d.display.displayId)
+        launchTarget(d.display.displayId, d.display)
     }
 
-    private fun launchTarget(displayId: Int) {
+    private fun options(displayId: Int): Bundle {
+        val opts = ActivityOptions.makeBasic()
+        opts.setLaunchDisplayId(displayId)
+        return opts.toBundle()
+    }
+
+    private fun launchTarget(displayId: Int, display: Display) {
+        val strategies = listOf(
+            Strategy("control: no options, default display") { i, _, _ -> startActivity(i) },
+            Strategy("activity.startActivity + launchDisplayId") { i, id, _ -> startActivity(i, options(id)) },
+            Strategy("applicationContext.startActivity + launchDisplayId") { i, id, _ -> applicationContext.startActivity(i, options(id)) },
+            Strategy("createDisplayContext(display).startActivity") { i, _, d -> createDisplayContext(d).startActivity(i) }
+        )
+        runStrategy(strategies, 0, displayId, display, gen)
+    }
+
+    private fun runStrategy(list: List<Strategy>, index: Int, displayId: Int, display: Display, g: Int) {
+        if (g != gen) return
+        if (index >= list.size) {
+            verdict = "VERDICT: FAIL - no launch strategy put the activity on the virtual display"
+            return
+        }
+        val s = list[index]
         LabState.reset()
+        val intent = Intent(this, LabTargetActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+        var err: String? = null
         try {
-            val opts = ActivityOptions.makeBasic()
-            opts.setLaunchDisplayId(displayId)
-            val intent = Intent(this, LabTargetActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-            startActivity(intent, opts.toBundle())
-            say("startActivity(display " + displayId + "): no exception")
+            s.run(intent, displayId, display)
         } catch (t: Throwable) {
-            say("startActivity failed: " + t.javaClass.simpleName + ": " + t.message)
+            err = shortTrace(t)
         }
         handler.postDelayed({
+            if (g != gen) return@postDelayed
             val actual = LabState.targetDisplayId
-            verdict = when {
-                actual == null -> "VERDICT: FAIL - target activity never started (launch blocked?)"
-                actual == displayId -> "VERDICT: PASS - activity runs on the virtual display ($displayId)"
-                else -> "VERDICT: FAIL - target ran on display $actual, not on $displayId"
+            val result = when {
+                err != null -> "EXCEPTION " + err
+                actual == null -> "no activity appeared"
+                else -> "ran on display " + actual
             }
-        }, 2500)
+            say("[" + (index + 1) + "] " + s.name + ": " + result)
+            if (index > 0 && err == null && actual != null && actual == displayId) {
+                verdict = "VERDICT: PASS via [" + s.name + "]"
+                return@postDelayed
+            }
+            try {
+                LabState.targetActivity?.finish()
+            } catch (ignored: Throwable) {
+            }
+            handler.postDelayed({ runStrategy(list, index + 1, displayId, display, g) }, 600)
+        }, 1800)
     }
 
     private fun forwardTouch(v: View, ev: MotionEvent) {
@@ -191,6 +244,7 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
     }
 
     private fun releaseLab() {
+        gen++
         try {
             vd?.release()
         } catch (ignored: Throwable) {
