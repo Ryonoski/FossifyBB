@@ -462,5 +462,16 @@
             android:exported="false"
             android:label="Xposed modules"
             android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name=".activities.DisplayLabActivity"
+            android:exported="false"
+            android:label="Display lab"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <activity
+            android:name=".activities.LabTargetActivity"
+            android:exported="false"
+            android:allowEmbedded="true"
+            android:resizeableActivity="true"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
     </application>
 </manifest>

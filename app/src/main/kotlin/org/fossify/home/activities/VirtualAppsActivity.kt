@@ -60,6 +60,7 @@ class VirtualAppsActivity : Activity() {
         menu.add(0, MENU_ADD, 0, "Add app").setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         menu.add(0, MENU_LOG, 1, "Copy last crash").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         menu.add(0, MENU_XP, 2, "Xposed modules").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        menu.add(0, MENU_LAB, 3, "Display lab").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
         return true
     }
 
@@ -68,6 +69,7 @@ class VirtualAppsActivity : Activity() {
             MENU_ADD -> showAddDialog()
             MENU_LOG -> copyCrash()
             MENU_XP -> startActivity(Intent(this, XposedActivity::class.java))
+            MENU_LAB -> startActivity(Intent(this, DisplayLabActivity::class.java))
         }
         return true
     }
@@ -177,5 +179,6 @@ class VirtualAppsActivity : Activity() {
         private const val MENU_ADD = 1
         private const val MENU_LOG = 2
         private const val MENU_XP = 3
+        private const val MENU_LAB = 4
     }
 }
