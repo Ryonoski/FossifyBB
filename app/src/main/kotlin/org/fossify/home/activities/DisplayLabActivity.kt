@@ -25,8 +25,8 @@ import android.widget.TextView
 import android.widget.Toast
 
 /**
- * Feasibility probe v2: create a virtual display rendering into a SurfaceView, then try several ways
- * of starting an activity on it (with full stack traces), forward touches, and print a report.
+ * Feasibility probe v3: virtual display rendering into a SurfaceView; try several ways of starting an activity
+ * on it (with stack traces); forward touches; print a report. Runs once per visit, capped at 6 launches.
  */
 class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
 
@@ -42,6 +42,8 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
     private var forwarded = 0
     private var verdict = ""
     private var gen = 0
+    private var autoStarted = false
+    private var launches = 0
 
     private val ticker = object : Runnable {
         override fun run() {
@@ -105,6 +107,7 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
                 log.setLength(0)
                 verdict = ""
                 forwarded = 0
+                launches = 0
                 val h = surfaceView.holder
                 if (h.surface != null && h.surface.isValid) startLab(h, vw, vh)
             }
@@ -117,11 +120,21 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         vw = width
         vh = height
-        if (vd == null) startLab(holder, width, height)
+        val existing = vd
+        if (existing != null) {
+            existing.surface = holder.surface
+        } else if (!autoStarted) {
+            autoStarted = true
+            startLab(holder, width, height)
+        }
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
-        releaseLab()
+        // Do NOT release: the lab is only covered (e.g. by a test activity on the main display).
+        try {
+            vd?.surface = null
+        } catch (ignored: Throwable) {
+        }
     }
 
     private fun say(line: String) {
@@ -183,7 +196,6 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
 
     private fun launchTarget(displayId: Int, display: Display) {
         val strategies = listOf(
-            Strategy("control: no options, default display") { i, _, _ -> startActivity(i) },
             Strategy("activity.startActivity + launchDisplayId") { i, id, _ -> startActivity(i, options(id)) },
             Strategy("applicationContext.startActivity + launchDisplayId") { i, id, _ -> applicationContext.startActivity(i, options(id)) },
             Strategy("createDisplayContext(display).startActivity") { i, _, d -> createDisplayContext(d).startActivity(i) }
@@ -195,6 +207,11 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
         if (g != gen) return
         if (index >= list.size) {
             verdict = "VERDICT: FAIL - no launch strategy put the activity on the virtual display"
+            return
+        }
+        launches++
+        if (launches > 6) {
+            verdict = "VERDICT: STOPPED - safety cap of 6 launches reached"
             return
         }
         val s = list[index]
@@ -216,7 +233,7 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
                 else -> "ran on display " + actual
             }
             say("[" + (index + 1) + "] " + s.name + ": " + result)
-            if (index > 0 && err == null && actual != null && actual == displayId) {
+            if (err == null && actual != null && actual == displayId) {
                 verdict = "VERDICT: PASS via [" + s.name + "]"
                 return@postDelayed
             }
@@ -224,7 +241,7 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
                 LabState.targetActivity?.finish()
             } catch (ignored: Throwable) {
             }
-            handler.postDelayed({ runStrategy(list, index + 1, displayId, display, g) }, 600)
+            handler.postDelayed({ runStrategy(list, index + 1, displayId, display, g) }, 700)
         }, 1800)
     }
 
@@ -263,7 +280,8 @@ class DisplayLabActivity : Activity(), SurfaceHolder.Callback {
         val live = "target display: " + (LabState.targetDisplayId?.toString() ?: "-") +
             "\ntarget ticks (proves it renders): " + LabState.ticks +
             "\ntouch-ups forwarded: " + forwarded +
-            "\nbutton clicks seen by target: " + LabState.clicks
+            "\nbutton clicks seen by target: " + LabState.clicks +
+            "\nlaunches so far: " + launches
         val touchVerdict = if (forwarded > 0) {
             if (LabState.clicks > 0) "TOUCH: PASS - forwarded taps reach the target" else "TOUCH: forwarded " + forwarded + " but target got no click (tap the button)"
         } else "TOUCH: tap the button inside the window above"
