@@ -473,5 +473,14 @@
             android:allowEmbedded="true"
             android:resizeableActivity="true"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name=".activities.EmbedLabActivity"
+            android:exported="false"
+            android:label="Embed lab"
+            android:theme="@android:style/Theme.DeviceDefault" />
+        <service
+            android:name=".activities.EmbedService"
+            android:exported="false"
+            android:process=":embed" />
     </application>
 </manifest>
